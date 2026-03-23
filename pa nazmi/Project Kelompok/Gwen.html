@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Gwenyver</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --soft-green: #4CAF50;
+            --light-green: #E8F5E9;
+            --medium-green: #81C784;
+            --dark-green: #388E3C;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            color: var(--dark-green) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--soft-green) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--light-green) 0%, #c8e6c9 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            color: var(--dark-green);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .profile-img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        
+        .profile-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            color: var(--dark-green);
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--medium-green);
+            border-radius: 2px;
+        }
+        
+        .text-center .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .skill-item {
+            background: linear-gradient(to right, var(--light-green), #d4edda);
+            color: var(--dark-green);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 8px 5px;
+            display: inline-block;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            border-color: var(--medium-green);
+        }
+        
+        .project-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .card-title {
+            color: var(--dark-green);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .tech-badge {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-badge:hover {
+            background-color: var(--medium-green);
+            color: white;
+        }
+        
+        .btn-custom {
+            background-color: var(--soft-green);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid var(--soft-green);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+        }
+        
+        .btn-custom:hover {
+            background-color: transparent;
+            color: var(--soft-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .project-card {
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Gwenyver</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="container-fluid hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title display-5 fw-bold fade-in">Gwenyver Website</h1>
+            <p class="lead fs-5 fade-in" style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                Seorang Web Developer yang passionate dalam menciptakan website yang responsif, 
+                fungsional, dan menarik secara visual. Dan juga hobi basket :P
+            </p>
+            <div class="fade-in">
+                <a href="#projects" class="btn btn-custom mt-4">
+                    Lihat Projek Saya
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="container py-5">
+        <h2 class="section-title fade-in">Tentang Saya :D</h2>
+        
+        <div class="row align-items-center fade-in">
+            <div class="col-md-6 mb-4 mb-md-0">
+             
+                <img src="c:\Users\prabo\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2026-01-30 at 13.23.48.jpeg" 
+                     alt="Foto Gwen yver" class="img-fluid profile-img">
+            </div>
+            
+            <div class="col-md-6">
+                <h3 class="mb-3" style="color: var(--dark-green);">Web Developer</h3>
+                <p class="mb-4">
+                    Hi, Saya Gwenyver seorang web developer dengan fokus pada pengembangan front-end. 
+                    Saya senang menciptakan pengalaman web yang menarik dan mudah digunakan bagi pengguna.
+                </p>
+                <p class="mb-4">
+                    Dengan keahlian dalam HTML, CSS, JavaScript, dan framework Bootstrap, saya mampu 
+                    membuat website yang responsif dan sesuai dengan kebutuhan pengguna.
+                </p>
+                
+                <h5 class="mb-3" style="color: var(--dark-green);">Skill:</h5>
+                <div class="mb-4">
+                    <span class="skill-item">HTML</span>
+                    <span class="skill-item">CSS</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">Bootstrap</span>
+                    <span class="skill-item">Responsive Design</span>
+                    <span class="skill-item">UI/UX</span>
+                    <span class="skill-item">Roblox Proplayer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="projects" class="container py-5" style="background-color: #f9f9f9; border-radius: 10px;">
+        <h2 class="section-title text-center fade-in">Proyek Terbaru</h2>
+        
+        <div class="row">
+            
+            <div class="col-md-4 mb-4 fade-in">
+                <div class="project-card h-100">
+                 
+                    <img src="c:\Users\prabo\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2026-01-30 at 13.33.02.jpeg" 
+                         class="card-img-top" alt="Website Portfolio">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3">Website Portfolio</h5>
+                        <p class="card-text mb-3" style="color: var(--text-light);">
+                            Website portfolio profesional dengan desain minimalis dan responsif. 
+                            Menampilkan karya dan pengalaman dengan layout yang menarik.
+                        </p>
+                        <div>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 fade-in">
+                <div class="project-card h-100">
+                   
+                    <img src="c:\Users\prabo\OneDrive\Pictures\Screenshots\Screenshot 2026-01-30 133200.png" 
+                         class="card-img-top" alt="E-commerce Website">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3">E-commerce Website</h5>
+                        <p class="card-text mb-3" style="color: var(--text-light);">
+                            Website e-commerce dengan sistem keranjang belanja, checkout, 
+                            dan manajemen produk. Fokus pada user experience yang optimal dan happy.
+                        </p>
+                        <div>
+                             <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">LocalStorage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 fade-in">
+                <div class="project-card h-100">
+                
+                    <img src="https://themefisher.com/blog/sb-admin.webp" 
+                         class="card-img-top" alt="Dashboard admin">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3">Dashboard Admin</h5>
+                        <p class="card-text mb-3" style="color: var(--text-light);">
+                            Dashboard admin dengan berbagai fitur manajemen data. 
+                            Menyediakan grafik interaktif dan tampilan data yang informatif.
+                        </p>
+                        <div>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Chart.js</span>
+                            <span class="tech-badge">Local Storage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+    <footer class="bg-dark text-center py-4">
+        <div class="container">
+            <p class="mb-0">Copyright ©️ 2026 Gwenyver</p>
+            <p class="mt-2" style="opacity: 0.8;">Portofolio Website</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+          
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            fadeInOnScroll();
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
+</body>
+</html>

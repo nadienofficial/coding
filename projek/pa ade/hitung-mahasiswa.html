@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mahasiswa</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+    }
+
+    form {
+        margin-bottom: 20px; 
+        padding: 15px;
+        border: 1px solid black;
+        width: 400px;
+    }
+
+    input, select {
+        margin: 5px 0;
+        width: 100%;
+        padding: 5px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #999;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+    }
+
+    .summary {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <h2>Formulir Data Mahasiswa</h2>
+    <form id="Formulir">
+        <label for="nama">Nama: </label><br>
+        <input type="text" id="nama" name="nama" placeholder="Input your Name"><br><br>
+        <label for="nim">Nomor Induk Mahasiswa</label><br>
+        <input type="text" id="induk" name="induk" placeholder="Input your number mahasiswa"><br><br>
+        <label for="JK">Jenis Kelamin</label><br>
+        <input type="radio" name="gender" value="laki-Laki" class="gender"><p>Laki-Laki</p><br><br>
+        <input type="radio" name="gender" value="Perempuan" class="gender"><p>Perempuan</p><br><br>
+        <button onclick="tambahInput()">New Data</button>
+        <p id="errorMsg" class="error"></p>
+    </form>
+    <table id="Tabledata">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NIM</th>
+                <th>Jenis Kelamin</th>
+            </tr>
+        </thead>
+    </table>
+    <div class="summary">
+        <p>Jumlah Laki-laki: </p><span id="jumlahlaki">0</span><br>
+        <p>Jumlah perempuan: </p><span id="jumlahperempuan">0</span>
+    </div>
+
+    <script>
+    let no = 0;
+    let jumlahlaki = 0;
+    let jumlahperempuan = 0;
+
+    function tambahInput() {
+        const nama = document.getElementById('nama').value.trim();
+        const noinduk = documnet.getElementById('induk').value.trim();
+        const errorMsg = document.getElementById('errormgs')
+        const genderRadio = document.getElementsByName('gender');
+        let gender = '';
+        for (let i = 0; i < genderRadio.length; i++) {
+            if (genderRadio[i].checked) {
+                gender = genderRadio[i].value;
+            }
+        }
+    if (naam === '' || induk === '' || gender === '') {
+        errorMsg.textContent = 'All field is not empty';
+        return;
+    } else {
+        errorMsg.textcontent = '';
+    }
+    no++;
+    const tabelBody = document.getElementById('tabeldata').getElementsByTagName('tbody')[0];
+    const newRow = tabelBody.insertRow();
+    newRow.insertCell(0).textcontent = 0;
+    newRow.insertCell(1).textcontent = name;
+    newRow.insertCell(2).textcontent = nim;
+    newRow.insertCell(3).textcontent = gender;
+
+    if (gender === 'laki-Laki') {
+        jumlahlaki-Laki++;
+    } else if (gender === 'perenpuan') {
+        jumlahperempuan++;
+    }
+
+    document.getElementById('jumlahLaki-Laki').textcontent = jumlahLaki-Laki;
+    document.getElementById('jumlahPerempuan').textcontent = jumlahPerempuan;
+
+    const genderinputs = document.getElementsByClassName('gender');
+    for (let i = 0; i < genderinputs.length; i++) {
+        genderinputs[i].checked = false;
+    }
+
+    document.getElementById('nama').value = '';
+    document.getElementById('induk').value = '';
+    }
+</script>
+</body>
+</html>
